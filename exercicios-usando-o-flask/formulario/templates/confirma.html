@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmação</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="caixa-confirmacao">
+        <h2>Confirme suas informações</h2>
+        <div class="informacoes">
+            <p><b>Nome:</b> {{ nome }}</p>
+            <p><b>Email:</b> {{ email }}</p>
+            <p><b>Data nasc:</b> {{ datanascimento }}</p>
+        </div>
+        <form method="POST" action="{{ url_for('finalize') }}">
+            <button type="submit" name="confirmacao" value="yes" class="botao-sim">Sim, está correto</button>
+            <button class="no" type="submit" name="confirmacao" value="no">Não, voltar</button>
+        </form>
+    </div>
+</body>
+</html>

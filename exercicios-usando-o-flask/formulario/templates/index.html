@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>Formulário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <form method="POST" action="{{ url_for('confirm') }}">
+        <h2>Preencha o formulário abaixo para roub... conhecermos você.</h2>
+        <label for="nome">Nome</label>
+        <input
+            type ="text"
+            id="nome"
+            name="nome"
+            placeholder="Nome completo"
+            value="{{ session.get('form_data', {}).get('nome', '') }}"
+            required />
+
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seunome@exemplo.com"
+            value="{{ session.get('form_data', {}).get('email', '') }}"
+            required />
+
+        <label for="datanascimento">Nascimento</label>
+        <input
+            type="date"
+            id="datanascimento"
+            name="datanascimento"
+            placeholder="dd/mm/aa"
+            value="{{ session.get('form_data', {}).get('datanascimento', '') }}"
+            required />
+
+        <button type="submit" class="botao-confirmar">Confirmar</button>
+        
+    </form>
+</body>
+</html>
