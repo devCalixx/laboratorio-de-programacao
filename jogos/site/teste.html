@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrossel de Imagens</title>
+  <link rel="stylesheet" href="teste.css" />
+</head>
+<body>
+  <h1>Carrossel de Imagens</h1>
+
+  <div class="carousel">
+    <button class="carousel-button prev">❮</button>
+
+    <div class="carousel-track-container">
+      <ul class="carousel-track">
+        <li class="carousel-slide">
+          <div class="image-wrapper">
+            <img src="./imagens/batalha-naval.png" alt="Batalha Naval" class="carousel-image" />
+          </div>
+        </li>
+        <li class="carousel-slide">
+          <div class="image-wrapper">
+            <img src="./imagens/torre-de-hanoi.png" alt="Torre de Hanoi" class="carousel-image" />
+          </div>
+        </li>
+        <!-- Adicione mais slides aqui -->
+      </ul>
+    </div>
+
+    <button class="carousel-button next">❯</button>
+  </div>
+
+  <div class="carousel-indicators">
+    <button class="indicator-dot active" data-slide-to="0" aria-selected="true"></button>
+    <button class="indicator-dot" data-slide-to="1" aria-selected="false"></button>
+    <!-- Adicione mais indicadores se necessário -->
+  </div>
+
+  <script src="plataforma.js"></script>
+</body>
+</html>
