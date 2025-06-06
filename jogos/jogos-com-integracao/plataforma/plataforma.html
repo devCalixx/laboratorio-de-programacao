@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ESTIM</title>
+    <link rel="stylesheet" href="plataforma.css">
+</head>
+<body background="./imagens/fundo2.png">
+    <header class="site-header">
+        <img src="./imagens/logo-estim.png" class="logo">
+        <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+                <li><a href="plataforma.html">Início</a></li>
+                <li><a href="#jogos">Jogos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="carousel" aria-label="Carrossel de imagens">
+        <div class="carousel-track">
+            <div class="carousel-slide">
+                <a href="adivinhe-o-numero.html" tabindex="0">
+                    <img src="./imagens/adivinhe-o-numero-certo.jpg" alt="Imagem 1 - Adivinhe o número"/>
+                    <div class="caption">Adivinhe o Número</div>
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="batalha-naval.html" tabindex="0">
+                    <img src="./imagens/batalha-naval-certo.jpg" alt="Imagem 2 - Batalha Naval"/>
+                    <div class="caption">Batalha Naval</div>
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="jogo-da-forca.html" tabindex="0">
+                    <img src="./imagens/forca-certo.jpg" alt="Imagem 3 - Jogo da forca-certo"/>
+                    <div class="caption">Jogo da forca</div>
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="jokenpo.html" tabindex="0">
+                    <img src="./imagens/jokenpo-certo.jpg" alt="Imagem 4 - Jokenpô"/>
+                    <div class="caption">Jokenpô</div>
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="quiz.html" tabindex="0">
+                    <img src="./imagens/quiz-certo.jpg" alt="Imagem 5 - Quiz sobre a Odisseia"/>
+                    <div class="caption">Quiz sobre a Odisseia</div>
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="torre-de-hanoi.html" tabindex="0">
+                    <img src="./imagens/torre-de-hanoi-certo.jpg" alt="Imagem 6 - Torre de Hanoi"/>
+                    <div class="caption">Torre de Hanoi</div>
+                </a>
+            </div>
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button prev" aria-label="Imagem anterior">&#10094;</button>
+            <button class="carousel-button next" aria-label="Próxima imagem">&#10095;</button>
+        </div>
+    </div>
+    <div class="carousel-indicators" role="tablist" aria-label="Indicadores do carrossel">
+        <button class="indicator-dot active" role="tab" aria-selected="true" aria-label="Imagem 1" data-slide-to="0"></button>
+        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Imagem 2" data-slide-to="1"></button>
+        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Imagem 3" data-slide-to="2"></button>
+        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Imagem 4" data-slide-to="3"></button>
+        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Imagem 5" data-slide-to="4"></button>
+        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Imagem 6" data-slide-to="5"></button>
+    </div>
+    <script src="plataforma.js"></script>
+</body>
+</html>
