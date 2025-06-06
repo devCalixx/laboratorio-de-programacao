@@ -1,37 +1,53 @@
+from flask import Flask, render_template, request, redirect, url_for
 import random
 
-opcoes = ["pedra", "papel", "tesoura"]
+app = Flask(__name__)
+
 pontuacao_jogador = 0
 pontuacao_computador = 0
 
-while True:
-    print(f"--------Jokenpô!--------\n")
-    tipo_jogo = int(input("Quer definir um número de partidas (DIGITE 1) ou jogar até quando quiser (DIGITE 2)? "))
-        
-    if tipo_jogo == 1:
-        partidas = int(input("------------------\nQuantas partidas um dos jogadores precisa ganhar para o jogo terminar? "))
 
-        while pontuacao_computador < partidas and pontuacao_jogador < partidas:
-            escolha = input("------------------\nFaça sua escolha. Pedra, papel ou tesoura? ").lower()
-            if escolha not in opcoes:
-                print("Escolha inválida. Tente novamente.")
-                continue
+opcoes = ["pedra", "papel", "tesoura"]
+escolha_computador = random.choice(opcoes)
 
-            computador = random.choice(opcoes)
+@app.route('/jokenpo', methods=['GET', 'POST'])
 
-            print(f"------------------\nVocê escolheu {escolha}.")
-            print(f"Seu oponente escolheu {computador}.")
+def index():
+    global pontuacao_computador, pontuacao_jogador
+    resultado = None
+    escolha_jogador = None
+    escolha_computador = None
+    
+    if request.method == 'POST':
+        escolha_jogador = request.form.get('escolha')
+        if escolha_jogador not in opcoes:
+            resultado = "Escolha inválida, por favor, selecione pedra, papel ou tesoura"
+        else:
+            escolha_computador = random.choice(opcoes)
 
-            if escolha == computador:
-                print(f"------------------\nEmpate! Ambos escolheram {escolha}\nSua pontuação: {pontuacao_jogador}\nPontuação do adversário: {pontuacao_computador}")
-            elif (escolha == "tesoura" and computador == "papel") or (escolha == "papel" and computador == "pedra") or (escolha == "pedra" and computador == "tesoura"):
+            if escolha_jogador == escolha_computador:
+                resultado = "Empate! Ambos escolheram {escolha_jogador}."
+            elif (escolha_jogador == "tesoura" and escolha_computador == "papel") or \
+                (escolha_jogador == "papel" and escolha_computador == "pedra") or \
+                (escolha_jogador == "pedra" and escolha_computador == "tesoura"):
                 pontuacao_jogador += 1
-                print(f"------------------\nVocê venceu, já que escolheu {escolha} e seu oponente escolheu {computador}.\nSua pontuação: {pontuacao_jogador}\nPontuação do adversário: {pontuacao_computador}")
+                resultado = "Você venceu! {escolha_jogador.capitalize()} vence {escolha_computador.capitalize()}"
             else:
                 pontuacao_computador += 1
-                print(f"------------------\nSeu oponente venceu, já que ele escolheu {computador} e você escolheu {escolha}.\nSua pontuação: {pontuacao_jogador}\nPontuação do adversário: {pontuacao_computador}")
+                resultado = "Computador venceu! {escolha_computador.capitalize()} vence {escolha_jogador.capitalize()}"
                 
-        if pontuacao_jogador == partidas:
+    return render_template('jokenpo.html',
+                           resultado = resultado,
+                           pontuacao_jogador = pontuacao_jogador,
+                           pontuacao_computador = pontuacao_computador,
+                           escolha_jogador = escolha_jogador,
+                           escolha_computador = escolha_computador)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+    
+    '''if pontuacao_jogador == partidas:
             print(f"------------------\nParabéns, jogador! Você venceu com {pontuacao_jogador} e seu oponente perdeu com {pontuacao_computador}")
         elif pontuacao_computador == partidas:
             print(f"------------------\nQue droga! Você perdeu com {pontuacao_jogador} e seu oponente venceu com {pontuacao_computador}")
@@ -68,4 +84,4 @@ while True:
                 break
             else:
                 pontuacao_computador = 0
-                pontuacao_jogador = 0
+                pontuacao_jogador = 0'''
