@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #195163;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body.padrao {background-color: #195163;}
+body.verao {background-color: #FCB454;}
+body.primavera {background-color: #BE5985;}
+body.inverno {background-color: #5356FF;}
+body.outono { background-color: #9F5255;}
+
+.container {
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #8ebdb6;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 25%;
+    padding-top: 50px;
+}
+
+body.padrao .container{background-color: #8ebdb6;}
+body.verao .container{background-color: #FF9B17;}
+body.primavera .container{background-color: #EC7FA9;}
+body.inverno .container{background-color: #378CE7;;}
+body.outono .container{background-color: #E16A54;}
+
+.container input {
+    text-align: center;
+    border: #195163;
+    border-radius: 6px;
+    margin: 10px;
+    width: 400px;
+    height: 50px;
+    font-size: 16px;
+}
+
+.container form {
+    justify-content: center;
+    align-items: center;
+    display: flexbox;
+}
+
+.container form button{
+    height: 50px;
+    width: 200px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
