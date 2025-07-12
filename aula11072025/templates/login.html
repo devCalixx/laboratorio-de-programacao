@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>LOGIN</title>
+    {% extends 'base.html' %}
+    <title>{% block title %}LOGIN{% endblock %}</title>
 </head>
-<body class="{{ tema }}">
+<body class="{{ tema or 'padrao' }}">
     {% if session['username'] %}
         <h1>Logado como <strong>{{ session['username'] }}</strong></h1>
         <form action="{{ url_for('logout') }}"><button type="submit">Logout</button></form>
     {% else %}
+        {% block content %}
         <div class="container">
             <h1>Insira login e senha</h1>
             <form action="{{ url_for('login') }}" method="post">
@@ -19,6 +21,7 @@
                 <button type="submit" id='logar'>Logar</button>
             </form>
         </div>
+        {% endblock %}
     {% endif %}
 </body>
 </html>

@@ -23,7 +23,7 @@ def login():
         else:
             mensagem = "Usuário ou senha inválidos"
 
-    return render_template('login.html', tema=tema, mensagem=mensagem)
+    return render_template('login.html', tema=tema, mensagem=mensagem, sem_header=True)
 
 @app.route('/bemvindo', methods=['GET', 'POST'])
 def bemvindo():
@@ -54,9 +54,17 @@ def noticias():
 
     tema = request.cookies.get('tema', 'padrao')
 
+    if request.method == "POST":
+        tema = request.form.get('tema', 'padrao')
+        response = make_response(render_template('noticias.html', username=username, tema=tema, contador=contador))
+        response.set_cookie("tema", tema, max_age=1800)
+        return response
+   
+    return render_template('noticias.html', username=username, tema=tema, contador=contador) 
+
 @app.route('/mudartema', methods=['POST'])
 def mudar_tema():
-    tema = request.form.get('tema')
+    tema = request.form.get('tema', 'padrao')
     response = make_response(redirect(url_for('bemvindo')))
     response.set_cookie('tema', tema, max_age=1800)
     return response

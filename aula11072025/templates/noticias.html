@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notícias</title>
+    {% extends 'base.html' %}
+    <title>{% block title %}Notícias{% endblock %}</title>
 </head>
 <body class="{{ tema }}">
-    <h1>Escolha qual tipo de notícia deseja ver</h1>
+    {% block content %}
+    <h1 style="text-align: center; margin: 0 auto 40px auto; margin-bottom: 40px;">Notícias</h1>
+    <div class="noticias">
+        <div class="noticia-politica">
+            
+        </div>
+        <div class="noticia-entretenimento">
+            
+        </div>
+        <div class="noticia-politica">
+            
+        </div>
+        <div class="noticia-ciencia">
+            
+        </div>
+        <div class="noticia-esportes">
+            
+        </div>
+        <div class="noticia-politica">
+            
+        </div>
+        <div class="noticia-entretenimento">
+            
+        </div>
+        <div class="noticia-entretenimento">
+            
+        </div>
+        <div class="noticia-esportes">
+            
+        </div>
+        <div class="noticia-ciencia">
+            
+        </div>
+        <div class="noticia-esportes">
+            
+        </div>
+        <div class="noticia-ciencia">
+            
+        </div>
+    </div>
+    {% endblock %}
 </body>
 </html>
