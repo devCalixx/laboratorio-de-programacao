@@ -89,16 +89,130 @@ body.outono .container{background-color: #E16A54;}
 }
 
 .noticias {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto; 
-    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.noticia-politica, .noticia-entretenimento, .noticia-esportes, .noticia-ciencia {
-    height: 300px;
-    width: 300px;
-    border: #195163 2px solid;
+.noticia {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    width: 100%;
+    transition: transform 0.3s;
+    height: 120px;
+}
+
+.noticia:hover {
+    transform: scale(1.01);
+}
+
+.noticias img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.noticia-content {
+    padding: 10px 15px;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.noticia-content h2 {
+    font-size: 0.85em;
+    margin: 0 0 5px 0;
+    color: #fff;
+}
+
+.noticia-content p {
+    font-size: 0.85em;
+    margin: 5px 0 0 0;
+    color: #ddd
+}
+
+.noticia-politica { border-top: 5px solid #E74C3C; }
+.noticia-entretenimento { border-top: 5px solid #9B59B6; }
+.noticia-esportes { border-top: 5px solid #27AE60; }
+.noticia-ciencia { border-top: 5px solid #2980B9; }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    position: relative;
+    text-align: justify;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: zoom 0.3s ease;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+.modal-content p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+    line-height: 1.5;
+}
+
+.fechar {
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    float: right;
+}
+
+.fechar:hover,
+.fechar:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.7);}
+    to {transform: scale(1);}
+}
+
+#contador-sessao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 9999;
 }

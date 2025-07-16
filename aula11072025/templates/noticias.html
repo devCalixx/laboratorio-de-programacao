@@ -8,43 +8,38 @@
 </head>
 <body class="{{ tema }}">
     {% block content %}
-    <h1 style="text-align: center; margin: 0 auto 40px auto; margin-bottom: 40px;">Notícias</h1>
     <div class="noticias">
-        <div class="noticia-politica">
-            
+         {% if recomendadas %}
+            <div class="recomendadas">
+                <h3>Notícias recomendadas (assunto: {{ assunto_cookie }})</h3>
+                <div class="noticias">
+                    {% for noticia in recomendadas %}
+                    <div class="noticia-{{ noticia.assunto }}" onclick="abrirModal('{{ noticia.id }}')">
+                        <img src="{{ url_for('static', filename='img/' + noticia.imagem) }}" alt="{{ noticia.titulo }}">
+                        <div class="noticia-content">
+                            <h2>{{ noticia.titulo }}</h2>
+                            <p>{{ noticia.resumo[:150] }}...</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        {% for noticia in noticias %}
+        <div class="noticia-{{ noticia.assunto }}" onclick="abrirModal('{{ noticia.id }}')">
+            <img src="{{ url_for('static', filename='img/' + noticia.imagem) }}" alt="{{ noticia.titulo }}">
+            <div class="noticia-content">
+                <h2>{{ noticia.titulo }}</h2>
+            </div>
         </div>
-        <div class="noticia-entretenimento">
-            
-        </div>
-        <div class="noticia-politica">
-            
-        </div>
-        <div class="noticia-ciencia">
-            
-        </div>
-        <div class="noticia-esportes">
-            
-        </div>
-        <div class="noticia-politica">
-            
-        </div>
-        <div class="noticia-entretenimento">
-            
-        </div>
-        <div class="noticia-entretenimento">
-            
-        </div>
-        <div class="noticia-esportes">
-            
-        </div>
-        <div class="noticia-ciencia">
-            
-        </div>
-        <div class="noticia-esportes">
-            
-        </div>
-        <div class="noticia-ciencia">
-            
+        {% endfor %}
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h2 id="modal-titulo"></h2>
+                <img id="modal-imagem" src="" alt="" style="width:100%">
+                <p id="modal-resumo"></p>
+            </div>
         </div>
     </div>
     {% endblock %}

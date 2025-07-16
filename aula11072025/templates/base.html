@@ -24,7 +24,9 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-
+    <div id="contador-sessao">
+            Entradas nesta sessão: {{ contador }}
+    </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
