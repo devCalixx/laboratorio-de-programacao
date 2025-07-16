@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='jokenpo.css') }}">
+  <title>Jokenpô</title>
+</head>
+<body>
+
+  <div class="overlay" id="start-modal" role="dialog" aria-modal="true" aria-labelledby="start-modal-title">
+    <div class="modal">
+      <h2 id="start-modal-title">Configurar Jogo</h2>
+      <p>Escolha se deseja jogar rodadas ilimitadas ou definir um número de partidas.</p>
+      <div class="options">
+        <button id="modo-ilimitado">Jogar Ilimitado</button>
+        <div>
+          <input type="number" id="num-partidas" placeholder="Número de rodadas" min="1" />
+          <button id="modo-definido">Jogar Definido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" role="main" aria-label="Jogo Pedra, Papel e Tesoura">
+
+    <h1>Pedra, Papel e Tesoura</h1>
+    <p>Escolha uma opção para jogar.</p>
+
+    <aside aria-label="Pontuação do jogo" class="scoreboard" role="region">
+      <div id="player-score">
+        <span class="label">Você</span>
+        <span class="score" id="score-jogador">0</span>
+      </div>
+      <div id="computer-score">
+        <span class="label">Computador</span>
+        <span class="score" id="score-computador">0</span>
+      </div>
+    </aside>
+
+    <section aria-label="Escolha sua jogada" class="choices" role="list">
+      <button class="choice" aria-label="Escolher Pedra" type="button" data-move="pedra">
+        <img src="https://img.icons8.com/ios-filled/100/000000/hand-rock.png" alt="Ícone Pedra" />
+      </button>
+      <button class="choice" aria-label="Escolher Papel" type="button" data-move="papel">
+        <img src="https://img.icons8.com/ios-filled/100/000000/hand.png" alt="Ícone Papel" />
+      </button>
+      <button class="choice" aria-label="Escolher Tesoura" type="button" data-move="tesoura">
+        <img src="https://img.icons8.com/ios-filled/100/000000/scissors.png" alt="Ícone Tesoura" />
+      </button>
+    </section>
+
+    <section id="result-screen" class="result-screen" aria-label="Resultado da partida"></section>
+
+    <button id="reset-button">Resetar Jogo</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='jokenpo.js') }}"></script>
+</body>
+</html>

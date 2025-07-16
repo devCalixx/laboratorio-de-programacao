@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  <title>Jogo da Forca</title>
+</head>
+<body>
+  <h1>Jogo da Forca</h1>
+
+  <div class="container">
+
+    <p><strong>Tema:</strong> {{ tema }}</p>
+
+    <div class="hangman-figure" aria-label="Figura da forca">
+      <div class="gallows-base"></div>
+      <div class="gallows-pole"></div>
+      <div class="gallows-top"></div>
+      <div class="rope"></div>
+
+      <div class="hangman-part head {% if tentativas_restantes <= 5 %}visible{% endif %}"></div>
+      <div class="hangman-part body {% if tentativas_restantes <= 4 %}visible{% endif %}"></div>
+      <div class="hangman-part left-arm {% if tentativas_restantes <= 3 %}visible{% endif %}"></div>
+      <div class="hangman-part right-arm {% if tentativas_restantes <= 2 %}visible{% endif %}"></div>
+      <div class="hangman-part left-leg {% if tentativas_restantes <= 1 %}visible{% endif %}"></div>
+      <div class="hangman-part right-leg {% if tentativas_restantes == 0 %}visible{% endif %}"></div>
+
+    </div>
+
+    <p class="letras">{{ palavra_mascarada }}</p>
+
+    <div class="wrong-letters-container">
+      <div class="wrong-letters-label">Letras erradas:</div>
+      <div class="wrong-letters">{{ letras_erradas | join(', ') if letras_erradas is iterable else letras_erradas }}</div>
+    </div>
+
+    <p class="attempts-left">Tentativas restantes: {{ tentativas_restantes }}</p>
+
+    <form method="POST" class="input-container" autocomplete="off" novalidate>
+      <label for="letter-input">Digite uma letra:</label>
+      <input id="letter-input" name="letra" maxlength="1" required pattern="[a-zA-Z]" autofocus />
+      <button id="submit-letter" type="submit">Enviar</button>
+    </form>
+    {% if mensagem %}
+      <p class="mensagem
+        {% if vitoria %}
+          vitoria
+        {% elif derrota %}
+          derrota
+        {% endif %}
+      ">
+        {{ mensagem }}
+      </p>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>
