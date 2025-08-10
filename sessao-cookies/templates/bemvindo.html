@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% extends 'base.html' %}
+    <title>{% block title %}Bem-vindo{% endblock %}</title>
+</head>
+<body class="{{ tema or 'padrao'}}">
+    {% block content %}
+    <div class="container">
+        <h1>Seja bem-vindo {{ username }}</h1>
+        <form id="temaForm" method="POST" action="{{ url_for('mudar_tema') }}">
+            <h2>Escolha a cor de fundo que quer usar.</h2>
+            <select id="tema" name="tema">
+                <option value="padrao" {% if tema == 'padrao' %}selected{% endif %}>Padrão</option>
+                <option value="verao" {% if tema == 'padrao' %}selected{% endif %}>Verão</option>
+                <option value="primavera" {% if tema == 'padrao' %}selected{% endif %}>Primavera</option>
+                <option value="inverno" {% if tema == 'padrao' %}selected{% endif %}>Inverno</option>
+                <option value="outono" {% if tema == 'padrao' %}selected{% endif %}>Outono</option>
+            </select>
+            <button type="submit">Aplicar tema</button>
+        </form>
+    </div>
+    {% endblock %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

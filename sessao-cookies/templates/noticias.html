@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'base.html' %}
+    <title>{% block title %}Notícias{% endblock %}</title>
+</head>
+<body class="{{ tema }}">
+    {% block content %}
+    <div class="noticias">
+         {% if recomendadas %}
+            <div class="recomendadas">
+                <h3>Notícias recomendadas (assunto: {{ assunto_cookie }})</h3>
+                <div class="noticias">
+                    {% for noticia in recomendadas %}
+                    <div class="noticia-{{ noticia.assunto }}" onclick="abrirModal('{{ noticia.id }}')">
+                        <img src="{{ url_for('static', filename='img/' + noticia.imagem) }}" alt="{{ noticia.titulo }}">
+                        <div class="noticia-content">
+                            <h2>{{ noticia.titulo }}</h2>
+                            <p>{{ noticia.resumo[:150] }}...</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        {% for noticia in noticias %}
+        <div class="noticia-{{ noticia.assunto }}" onclick="abrirModal('{{ noticia.id }}')">
+            <img src="{{ url_for('static', filename='img/' + noticia.imagem) }}" alt="{{ noticia.titulo }}">
+            <div class="noticia-content">
+                <h2>{{ noticia.titulo }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h2 id="modal-titulo"></h2>
+                <img id="modal-imagem" src="" alt="" style="width:100%">
+                <p id="modal-resumo"></p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
