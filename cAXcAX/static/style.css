@@ -1,0 +1,72 @@
+header {
+    background-color: rgb(211, 139, 139);
+    display: flex;
+
+    margin: -10px;
+    padding-left: 45px;
+    font-family: "Press Start 2P";
+}
+
+#titulo {
+    margin-top: 27.5px;
+}
+
+#itens_head {
+    margin-left: 30px;
+}
+
+#itens_head li {
+    margin-left: -15px;
+    font-size: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    padding-right: 80px;
+}
+
+#itens_head li a {
+    text-decoration: none;
+    color:black;
+}
+
+#yoshi {
+    margin-right: 10px;
+    width: 90px;
+    height: 90px;
+}
+
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#tela-para-abrir, #tela-para-abrir2, #tela-para-abrir3 {
+    width: 200px;
+    height: 150px;
+    background-color: rgb(231, 202, 120);
+    position: absolute;
+    padding: 10px;
+}
+
+#tela-para-abrir li, #tela-para-abrir2 li, #tela-para-abrir3 li {
+    font-size: 12px;
+}
+
+.escondida {
+    display: none; /* Ou visibility: hidden; */
+}
+
+.visivel {
+    border-radius: 10px;
+    display: block; /* Ou visibility: visible; */
+    top: 103px; /* Exemplo de ajuste de posição */
+    transition: top 0.3s ease-in-out; /* Para uma animação suave */
+}
+
+.titulo_pagina {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 50px;
+}

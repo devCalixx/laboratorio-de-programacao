@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Início - cAXcAX </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="div_head">
+        <header>
+            <img id="yoshi" src="{{ url_for('static', filename='grandao.gif') }}" alt="yoshi">
+            <h1 id="titulo">cAX cAX</h1>
+            <ul id="itens_head">
+                <li><a href="#" id="topico">Jogos</a>
+                    <div id="tela-para-abrir" class="escondida">
+                        <ul>
+                            <li>Solarian Defenders</li>
+                            <li>Next Station</li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" id="topico2">Sobre</a>
+                    <div id="tela-para-abrir2" class="escondida">
+                        <ul>
+                            <li>História</li>
+                            <li>Comunidade</li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" id="topico3">Recursos</a>
+                    <div id="tela-para-abrir3" class="escondida">
+                        <ul>
+                            <li>Guia</li>
+                            <li>Ajuda</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </header>
+        <h1 class="titulo_pagina">Os melhores jogos retrô para você!</h1>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
